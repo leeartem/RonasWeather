@@ -21,21 +21,6 @@ services:
       - redis
     networks:
       - laravel
-  worker:
-    build:
-        context: ./dockerfiles
-        dockerfile: work.dockerfile
-    image: leeartem/api-image
-    container_name: worker
-    restart: always
-    volumes:
-        - './src:/var/www/html'
-    depends_on:
-        - redis
-        - site
-    networks:
-        - laravel
-    entrypoint: ["php", "artisan", "queue:work"]
   php:
     build:
       context: ./dockerfiles

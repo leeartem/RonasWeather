@@ -23,7 +23,7 @@ abstract class Geocode
         $this->query = $query;
     }
 
-    abstract public function getCity();
-
     abstract public function getGeo();
+    
+    // abstract public function getCity();
 }

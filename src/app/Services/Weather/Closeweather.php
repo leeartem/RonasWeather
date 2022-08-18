@@ -4,7 +4,7 @@ namespace App\Services\Weather;
 use App\Traits\Client;
 use \Illuminate\Http\Request;
 
-class Openweather extends Weather
+class Closeweather extends Weather
 {
     use Client;
 

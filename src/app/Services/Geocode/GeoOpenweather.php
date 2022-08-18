@@ -3,6 +3,7 @@
 namespace App\Services\Geocode;
 
 use App\Traits\Client;
+use App\Exceptions\CityNotFound;
 
 class GeoOpenweather extends Geocode
 {
@@ -19,17 +20,19 @@ class GeoOpenweather extends Geocode
     {
         $this->method = 'direct?';
         $result = $this->fetch();
-        if (!count($result)) throw new \Exception("City not found", 1);
+        if (!count($result)) throw new CityNotFound();
 
         return $result[0];        
     }
 
-    public function getCity()
-    {
-        $this->method = 'reverse?';
-        $result = $this->fetch();
-        if (!count($result)) throw new \Exception("City not found", 1);
+    // Этот метод не нужен тут, но с его помощью можно
+    // получить город по его координатам
+    // public function getCity()
+    // {
+    //     $this->method = 'reverse?';
+    //     $result = $this->fetch();
+    //     if (!count($result)) throw new CityNotFound();
 
-        return $result[0];      
-    }
+    //     return $result[0];      
+    // }
 }
